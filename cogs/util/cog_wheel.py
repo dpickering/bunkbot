@@ -65,7 +65,6 @@ class CogWheel:
         else:
             return ""
 
-
     """
     Handle an error
     """
