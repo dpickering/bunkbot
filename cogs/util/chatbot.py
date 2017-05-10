@@ -39,7 +39,7 @@ class Chatbot:
     async def reply(self, message):
         try:
             await self.bot.send_typing(message.channel)    
-            content = re.sub(r'bunkbot', "", str(message.content), flags=re.IGNORECASE).strip()
+            content = re.sub(r'chaosbot', "", str(message.content), flags=re.IGNORECASE).strip()
             
             if content == "":
                 content = "Hello!"
@@ -55,5 +55,5 @@ class Chatbot:
     """
     def is_mention(self, message):
         content = str(message.content).upper().split(" ")
-        is_bunk_mention = len(message.mentions) > 0 and message.mentions[0].name == "BunkBot"
-        return is_bunk_mention or "BUNKBOT" in re.findall("[a-zA-Z]+", str(message.content).upper())
+        is_bunk_mention = len(message.mentions) > 0 and message.mentions[0].name == "ChaosBot"
+        return is_bunk_mention or "CHAOSBOT" in re.findall("[a-zA-Z]+", str(message.content).upper())
