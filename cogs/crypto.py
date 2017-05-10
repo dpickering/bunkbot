@@ -28,11 +28,10 @@ class Crypto(CogWheel):
     async def btc(self, ctx):
         try:
             await self.bot.send_typing(ctx.message.channel)
-            print(self.curr_price_bpi_api)
+
             curr_btc_price_result = self.http_get(self.curr_price_bpi_api)
-            print(curr_btc_price_result)
-            # await self.send_message_plain("FOO")
-            await self.send_message("Current BTC price", "TEST TEST", None, "Price info courtesy of Coindesk", None)
+
+            await self.send_message("Current BTC price as of {}".format(curr_btc_price_result['time']['updated']), "1 BTC = ${}".format(curr_btc_price_result['bpi'][self.fiat]['rate']), None, curr_btc_price_result['disclaimer'], None)
         except Exception as e:
             print(e)
             await self.handle_error(e)
